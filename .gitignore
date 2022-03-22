@@ -1,0 +1,13 @@
+src/.env
+
+# テスト用のDB
+src/tests/http_test/test.db
+
+src/mysql
+src/test.db
+src/storage/*
+
+# テスト用ストレージ保存ディレクトリ
+src/tests/http_test/storage/*
+src/tests/usecases_test/storage/*
+src/tests/interfaces_test/storage/*
