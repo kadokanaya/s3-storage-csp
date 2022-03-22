@@ -13,10 +13,9 @@ import (
 
 // AuditProofGenテスト
 func TestAuditProofGen(t *testing.T) {
-	param := &contracts.Param{
-		Paring: "",
-		G:      []byte{},
-		U:      []byte{},
+		Pairing: "",
+		G:       []byte{},
+		U:       []byte{},
 	}
 	Pg := crypt.NewAuditCrypt(param)
 	testByte := []byte{1}

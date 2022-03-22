@@ -27,7 +27,7 @@ func (pr *auditCrypt) AuditProofGen(
 ) (*entities.Proof, error) {
 	var myu *pbc.Element
 	var gamma *pbc.Element
-	pairing, err := pbc.NewPairingFromString(pr.Param.Paring)
+	pairing, err := pbc.NewPairingFromString(pr.Param.Pairing)
 	if err != nil {
 		return nil, err
 	}

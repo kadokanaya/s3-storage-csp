@@ -6,7 +6,7 @@ import (
 )
 
 type Param struct {
-	Paring string
+	Pairing string
 	G      []byte
 	U      []byte
 }
