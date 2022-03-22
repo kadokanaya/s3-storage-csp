@@ -4,17 +4,16 @@ import (
 	"fmt"
 	"sp/src/core"
 	"sp/src/domains/entities"
-	"sp/src/interfaces/contracts"
 	"sp/src/usecases/port"
 
 	"github.com/Nik-U/pbc"
 )
 
 type auditCrypt struct {
-	Param *contracts.Param
+	Param *entities.Param
 }
 
-func NewAuditCrypt(param *contracts.Param) port.AuditCrypt {
+func NewAuditCrypt(param *entities.Param) port.AuditCrypt {
 	return &auditCrypt{
 		Param: param,
 	}
@@ -68,8 +67,8 @@ func (pr *auditCrypt) AuditProofGen(
 
 }
 
-func CreateMetaData(uc *entities.Content, user *entities.User, param *contracts.Param) (*entities.Content, error) {
-	pairing, err := pbc.NewPairingFromString(param.Paring)
+func CreateMetaData(uc *entities.Content, user *entities.User, param *entities.Param) (*entities.Content, error) {
+	pairing, err := pbc.NewPairingFromString(param.Pairing)
 	if err != nil {
 		return nil, err
 	}
@@ -112,8 +111,8 @@ func CreateMetaData(uc *entities.Content, user *entities.User, param *contracts.
 	}, nil
 }
 
-func AuditVerify(params *contracts.Param, pubKeyByte []byte, content *entities.Content, proof *entities.Proof, chal *entities.Chal) ([]byte, []byte, error) {
-	pairing, _ := pbc.NewPairingFromString(params.Paring)
+func AuditVerify(params *entities.Param, pubKeyByte []byte, content *entities.Content, proof *entities.Proof, chal *entities.Chal) ([]byte, []byte, error) {
+	pairing, _ := pbc.NewPairingFromString(params.Pairing)
 	aTable, vTable := core.HashChallen(content.SplitCount, chal.C, chal.K1, chal.K2, pairing)
 	g := pairing.NewG1().SetBytes(params.G)
 	pubKey := pairing.NewG1().SetBytes(pubKeyByte)

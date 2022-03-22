@@ -119,8 +119,8 @@ func Serve() {
 
 // 	log.Print(db)
 // 	// パラメータを取得
-// 	param := &contracts.Param{
-// 		Paring: "a",
+// 	param := &entities.Param{
+// 		Pairing: "a",
 // 		G:      []byte{1},
 // 		U:      []byte{1},
 // 	}

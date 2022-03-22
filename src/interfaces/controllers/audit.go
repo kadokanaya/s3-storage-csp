@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"net/http"
+	"sp/src/domains/entities"
 	"sp/src/interfaces/contracts"
 	"sp/src/interfaces/crypt"
 	"sp/src/interfaces/gateways"
@@ -21,7 +22,7 @@ type AuditController struct {
 	// -> presenter.NewAuditOutputPort
 	OutputFactory func(w http.ResponseWriter) port.AuditOutputPort
 	// -> crypt.NewAuditCrypt
-	CryptFactory func(p *contracts.Param) port.AuditCrypt
+	CryptFactory func(p *entities.Param) port.AuditCrypt
 	// -> interactor.NewAuditInputPort
 	InputFactory func(
 		o port.AuditOutputPort,
@@ -30,10 +31,10 @@ type AuditController struct {
 		cr port.AuditCrypt,
 	) port.AuditInputPort
 	Conn  *gorm.DB
-	Param *contracts.Param
+	Param *entities.Param
 }
 
-func LoadAuditController(db *gorm.DB, param *contracts.Param) *AuditController {
+func LoadAuditController(db *gorm.DB, param *entities.Param) *AuditController {
 	return &AuditController{Conn: db, Param: param}
 }
 

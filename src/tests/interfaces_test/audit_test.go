@@ -4,7 +4,6 @@ import (
 	"sp/src/asserts"
 	"sp/src/core"
 	"sp/src/domains/entities"
-	"sp/src/interfaces/contracts"
 	"sp/src/interfaces/crypt"
 	"testing"
 
@@ -13,6 +12,7 @@ import (
 
 // AuditProofGenテスト
 func TestAuditProofGen(t *testing.T) {
+	param := &entities.Param{
 		Pairing: "",
 		G:       []byte{},
 		U:       []byte{},
@@ -62,10 +62,10 @@ func TestMakeMetaData(t *testing.T) {
 	u := pairing.NewG1().Rand()
 	privKey := pairing.NewZr().Rand()
 	pubKey := pairing.NewG1().MulZn(g, privKey)
-	p := &contracts.Param{
-		Paring: params.String(),
-		G:      g.Bytes(),
-		U:      u.Bytes(),
+	p := &entities.Param{
+		Pairing: params.String(),
+		G:       g.Bytes(),
+		U:       u.Bytes(),
 	}
 
 	//* メタデータ作成
@@ -105,5 +105,5 @@ func TestMakeMetaData(t *testing.T) {
 	if err != nil {
 		t.Fatal(l, r)
 	}
-	asserts.AssertEqual(t,l,r,"ペアリングの一致の確認")
+	asserts.AssertEqual(t, l, r, "ペアリングの一致の確認")
 }

@@ -2,7 +2,6 @@ package mocks
 
 import (
 	entities "sp/src/domains/entities"
-	"sp/src/interfaces/contracts"
 	"sp/src/usecases/port"
 )
 
@@ -10,7 +9,7 @@ type AuditControllerMock struct {
 	RepoFactory     func() port.AuditRepository
 	ContractFactory func() port.AuditContract
 	OutputFactory   func() port.AuditOutputPort
-	CryptFactory    func(param contracts.Param) port.AuditCrypt
+	CryptFactory    func(param entities.Param) port.AuditCrypt
 	InputFactory    func(
 		o port.AuditOutputPort,
 		r port.AuditRepository,
@@ -31,7 +30,7 @@ func NewAuditOutputPortMock() port.AuditOutputPort {
 	return &AuditOutputPortMock{}
 }
 
-func NewAuditCryptMock(p contracts.Param) port.AuditCrypt {
+func NewAuditCryptMock(p entities.Param) port.AuditCrypt {
 	return &AuditCryptMock{
 		Param: p,
 	}
@@ -44,7 +43,7 @@ type AuditOutputPortMock struct {
 }
 
 type AuditCryptMock struct {
-	Param contracts.Param
+	Param entities.Param
 }
 
 type AuditContractMock struct {

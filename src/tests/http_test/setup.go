@@ -2,7 +2,6 @@ package http
 
 import (
 	"sp/src/domains/entities"
-	"sp/src/interfaces/contracts"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
@@ -20,6 +19,6 @@ func LoadTestDB() (*gorm.DB, error) {
 }
 
 // テスト用のParamを取得
-func LoadTestParam() (*contracts.Param, error) {
-	return &contracts.Param{}, nil
+func LoadTestParam() (*entities.Param, error) {
+	return &entities.Param{}, nil
 }

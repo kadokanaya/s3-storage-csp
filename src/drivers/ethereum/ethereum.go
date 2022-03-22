@@ -1,9 +1,7 @@
 package ethereum
 
-import (
-	"sp/src/interfaces/contracts"
-)
+import "sp/src/domains/entities"
 
-func GetParam() (contracts.Param, error) {
-	return contracts.Param{}, nil
+func GetParam() (entities.Param, error) {
+	return entities.Param{}, nil
 }
